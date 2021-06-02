@@ -1,4 +1,5 @@
 defmodule SafoaTest do
+  @moduledoc false
   use ExUnit.Case
   doctest Safoa
   doctest Safoa.Utils
@@ -7,8 +8,4 @@ defmodule SafoaTest do
   doctest Safoa.Crypto
   doctest Safoa.Keys.Box
   doctest Safoa.Crypto.Box
-
-  test "greets the world" do
-    assert Safoa.hello() == :world
-  end
 end
