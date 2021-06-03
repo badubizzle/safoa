@@ -49,5 +49,4 @@ defmodule Safoa.Crypto do
         {:error, error}
     end
   end
-
 end

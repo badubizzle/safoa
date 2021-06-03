@@ -12,7 +12,12 @@ defmodule Safoa.Crypto.Box do
     iex> Safoa.Crypto.Box.encrypt("Hello", public, private, nonce) |> elem(0)
     :ok
   """
-  @spec encrypt(data :: binary(), public_key :: binary(), private_key :: binary(), nonce :: binary()) ::
+  @spec encrypt(
+          data :: binary(),
+          public_key :: binary(),
+          private_key :: binary(),
+          nonce :: binary()
+        ) ::
           {:ok, binary}
   def encrypt(data, public_key, private_key, nonce)
       when is_binary(data) and is_binary(public_key) and is_binary(private_key) do

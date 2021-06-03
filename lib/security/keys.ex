@@ -5,7 +5,6 @@ defmodule Safoa.Keys do
   alias Safoa.Crypto
   import Safoa.Utils
 
-
   @spec key_size :: integer()
   def key_size do
     :enacl.secretbox_KEYBYTES()

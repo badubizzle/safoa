@@ -6,12 +6,12 @@ defmodule Safoa.Keys.Box do
 
   @doc """
   Generate private and public key pairs for box encryption
-
+  Returns %{public: binary, private: binary}
   ### Example
     iex> Safoa.Keys.Box.generate_key_pairs()
     iex> %{}
   """
-  @spec generate_key_pairs() :: map()
+  @spec generate_key_pairs() :: %{public: binary(), private: binary()}
   def generate_key_pairs do
     %{secret: secret, public: public} = :enacl.box_keypair()
     {:ok, private} = encode(secret)
