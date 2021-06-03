@@ -51,3 +51,9 @@ jobs:
       run: mix deps.get
     - name: Run tests
       run: mix test
+    - name: Compile warnings as error
+      run: mix compile --warnings-as-errors --force
+    - name: Run credo
+      run: mix credo --strict
+    - name: Check code format
+      run: mix format --check-formatted
