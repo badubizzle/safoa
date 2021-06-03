@@ -20,4 +20,8 @@ defmodule Safoa.Utils do
   def decode(string, _return_on_error) when is_binary(string) do
     decode(string)
   end
+
+  def random_string(length) do
+    encode(:enacl.randombytes(length))
+  end
 end
