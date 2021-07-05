@@ -291,6 +291,37 @@ defmodule Safoa.Documents.Store do
   end
 
   @doc """
+  Returns a encrypted document with the given id
+
+  ### Example
+    iex> alias Safoa.Documents.Store
+    iex> alias Safoa.Documents.User
+    iex> alias Safoa.Documents.Document
+    iex> store = Store.new()
+    iex> user_id = "100"
+    iex> password = "Password"
+    iex> content = "Hello word"
+    iex> store = Store.add_user(store, user_id, password)
+    iex> {:ok, %Document{}=document, store} = Store.add_document(store, user_id, password, content)
+    iex> document.id != nil
+    true
+    iex> {:ok, doc} =  Store.get_document(store, document.id)
+    iex> document.id == doc.id
+    true
+  """
+  @spec get_document(Safoa.Documents.Store.t(), binary) ::
+          {:error, nil} | {:ok, Safoa.Documents.Document.t()}
+  def get_document(%__MODULE__{} = db, document_id) when is_binary(document_id) do
+    case Map.get(db.documents, document_id) do
+      %Document{} = doc ->
+        {:ok, doc}
+
+      _ ->
+        {:error, nil}
+    end
+  end
+
+  @doc """
   Allows a user to share encrypted document with another user.
   The from-user must have access to the document in order to be able to share
 
